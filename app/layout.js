@@ -20,7 +20,7 @@ export const metadata = {
   title: "FreeToolShop | All-in-One Free Online Tools",
   description: "Convert, compress, calculate, and solve your daily tasks instantly with 100% free and secure online tools from FreeToolShop.com.", // ✅ SEO description,
   icons: {
-    icon: "/favicon.PNG", // or .png
+    icon: "/favicon.png", // or .png
     // apple: "/apple-touch-icon.png",
   },
 };
