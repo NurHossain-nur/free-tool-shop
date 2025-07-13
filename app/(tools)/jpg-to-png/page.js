@@ -47,7 +47,7 @@ export const metadata = {
 
 export default function JpgToPngPage() {
   return (
-    <div className="bg-[var(--background)] text-[var(--foreground)]">
+    <div className="bg-base-100 text-neutral">
        {/* ✅ Structured Data (FAQ Schema) */}
       <Script
         id="jpg-to-png-faq"
@@ -96,7 +96,7 @@ export default function JpgToPngPage() {
       />
 
       <main className="max-w-6xl mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-6 text-center text-[var(--color-primary)]">
+        <h1 className="text-3xl font-bold mb-6 text-center text-primary">
           JPG to PNG Converter
         </h1>
 
