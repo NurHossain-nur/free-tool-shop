@@ -12,6 +12,19 @@ export const metadata = {
     "Convert JPG, PNG, WebP images to PDF online for free. Batch upload, reorder, compress, and add watermark. No signup or installation required.",
   keywords:
     "image to pdf converter, convert images to pdf online, jpg to pdf, png to pdf, webp to pdf, batch convert images, compress pdf, add watermark to pdf",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://www.freetoolshop.com/image-to-pdf",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
+
   openGraph: {
     title: "Image to PDF Converter - Fast & Free Online Tool",
     description:
@@ -41,56 +54,56 @@ export default function ImageToPDFPage() {
     <div className="bg-gray-50 text-gray-800">
       {/* Inject JSON-LD Structured Data */}
       <Script
-  id="faq-schema"
-  type="application/ld+json"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Is this Image to PDF Converter free?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes, it's 100% free. No sign-up or subscription required.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Does it work on iPhone and Android?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes! You can use this tool directly from Safari on iOS or Chrome on Android. It supports uploading from your photo gallery.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Are my images safe and private?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "All conversions happen on your device using JavaScript. No images are uploaded to a server.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Can I compress or add a watermark?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes! You can choose to compress images before conversion and optionally add a watermark in the settings panel.",
-          },
-        },
-      ],
-    }),
-  }}
-/>
+        id="faq-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Is this Image to PDF Converter free?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes, it's 100% free. No sign-up or subscription required.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Does it work on iPhone and Android?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes! You can use this tool directly from Safari on iOS or Chrome on Android. It supports uploading from your photo gallery.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Are my images safe and private?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "All conversions happen on your device using JavaScript. No images are uploaded to a server.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I compress or add a watermark?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes! You can choose to compress images before conversion and optionally add a watermark in the settings panel.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
 
       <div className="max-w-6xl mx-auto p-4">
         <header className="mb-6 flex items-center justify-center  space-x-3 text-primary">
-        <FiUpload size={32} />
-        <h1 className="text-3xl font-bold">Image to PDF Converter</h1>
-      </header>
+          <FiUpload size={32} />
+          <h1 className="text-3xl font-bold">Image to PDF Converter</h1>
+        </header>
 
         {/* Client-side conversion UI */}
         <ClientWrapper />
@@ -245,7 +258,6 @@ export default function ImageToPDFPage() {
           &copy; {new Date().getFullYear()} Image to PDF Converter - Compatible
           with iOS, Android & Desktop
         </footer> */}
-
       </div>
     </div>
   );
