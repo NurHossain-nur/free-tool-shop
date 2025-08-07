@@ -292,7 +292,7 @@ const ImageResizer = () => {
   };
 
   return (
-    <div className=" max-w-6xl mx-auto text-text">
+    <div className=" max-w-6xl bg-neutral p-4 rounded-md  mx-auto text-text">
       {/* <Helmet>
         <title>
           Bulk Image Resizer - Resize Images Online in Bulk for Free

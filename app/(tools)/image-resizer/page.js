@@ -48,10 +48,33 @@ export const metadata = {
 export default function ImageResizerPage() {
   return (
     <div className="bg-base-100 text-neutral">
-
-      
-
       {/* ✅ Structured Data */}
+      <Script
+        id="image-resizer-software-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Image Resizer",
+            operatingSystem: "All",
+            applicationCategory: "UtilityApplication",
+            offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            featureList: [
+              "Resize JPG, PNG, and WebP images online",
+              "Custom width, height, aspect ratio and compression",
+              "Convert between formats (WebP, PNG, JPEG)",
+              "Privacy-focused – all processing in browser",
+              "Fast and responsive UI with no sign-up required",
+            ],
+            url: "https://www.freetoolshop.com/image-resizer",
+            description:
+              "Free online Image Resizer for JPG, PNG, WebP. Resize, compress, convert and reorder images quickly in your browser.",
+            applicationSubCategory: "ImageEditingSoftware",
+          }),
+        }}
+      />
       <Script
         id="faq-schema"
         type="application/ld+json"
@@ -102,22 +125,62 @@ export default function ImageResizerPage() {
         <h1 className="text-3xl font-bold mb-6 text-center text-primary">
           Image Resizer Tool
         </h1>
+        <p className="text-justify text-gray-700 max-w-6xl mx-auto my-2">
+          Resize images effortlessly with our free browser-based Image Resizer.
+          Supports JPG, PNG, and WebP formats—you can adjust dimensions,
+          maintain aspect ratio, compress, or convert formats, all without
+          installing software or registering.
+        </p>
 
         {/* Client-side logic & UI */}
         <ClientWrapper />
 
         <section className="mt-10 text-center text-gray-600">
-          <h2 className="text-lg font-semibold text-secondary">How to Resize an Image</h2>
-          <p className="mt-2">
-            Resize JPG, PNG, or WebP images with ease:
-          </p>
+          <h2 className="text-lg font-semibold text-secondary">
+            How to Resize an Image
+          </h2>
+          <p className="mt-2">Resize JPG, PNG, or WebP images with ease:</p>
           <ol className="list-decimal list-inside mt-4 text-left max-w-2xl mx-auto text-base space-y-2 text-gray-700">
             <li>Drag and drop multiple images into the upload area.</li>
-            <li>Adjust resize settings like width, height, format, and background color.</li>
-            <li>Click <strong>&quot;Apply&quot;</strong> and then <strong>&quot;Resize All&quot;</strong>.</li>
+            <li>
+              Adjust resize settings like width, height, format, and background
+              color.
+            </li>
+            <li>
+              Click <strong>&quot;Apply&quot;</strong> and then{" "}
+              <strong>&quot;Resize All&quot;</strong>.
+            </li>
             <li>Download individual images or all as a ZIP file.</li>
           </ol>
         </section>
+
+        <section className="mt-12 bg-base-100 p-6 rounded-lg shadow-md">
+  <h2 className="text-2xl font-bold mb-4 text-primary">
+    Resize Images for Web, Email & Social Media
+  </h2>
+  <p className="text-gray-700">
+    Whether you&apos;re preparing images for your blog, eCommerce store, or social media, proper sizing is crucial. Our tool helps you create lightweight, high-quality images for any platform.
+  </p>
+  <ul className="list-disc list-inside mt-4 space-y-2 text-gray-700">
+    <li>📱 <strong>Instagram:</strong> Resize for posts, stories, and reels.</li>
+    <li>🖥️ <strong>Web:</strong> Optimize images to load faster and improve SEO.</li>
+    <li>📧 <strong>Email:</strong> Shrink image size to reduce email bloat.</li>
+    <li>📘 <strong>Facebook & LinkedIn:</strong> Use correct image dimensions for clean previews.</li>
+    <li>🛒 <strong>Shopify, Etsy, eBay:</strong> Resize product images with correct aspect ratio.</li>
+  </ul>
+</section>
+
+<section className="mt-12 bg-base-100 p-6 rounded-lg shadow-md">
+  <h2 className="text-2xl font-bold mb-4 text-primary">Key Features of Our Online Image Resizer</h2>
+  <ul className="list-disc list-inside text-gray-700 space-y-2">
+    <li>🖼️ Resize JPG, PNG, or WebP with custom width & height</li>
+    <li>🧠 Smart aspect ratio lock to prevent distortion</li>
+    <li>📦 Compress images while preserving quality</li>
+    <li>🔀 Convert image formats (JPG ⇄ PNG ⇄ WebP)</li>
+    <li>🔒 100% privacy — no image uploads, runs in your browser</li>
+    <li>📱 Works on mobile, desktop, and tablets — no app needed</li>
+  </ul>
+</section>
 
         {/* FAQ Section */}
         <section className="mt-12">

@@ -262,7 +262,7 @@ const ImageToPDFConverter = () => {
   const onDragOver = (e) => e.preventDefault();
 
   return (
-    <div className=" bg-base-200 flex flex-col items-center p-4">
+    <div className=" bg-neutral p-4 rounded-lg  flex flex-col items-center">
 
 
       <ToastContainer />

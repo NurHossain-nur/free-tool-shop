@@ -181,7 +181,7 @@ const JpgToPng = () => {
 
   return (
     <div
-      className="max-w-6xl mx-auto p-6 text-text shadow-xl rounded-xl mt-10"
+      className="max-w-6xl bg-neutral p-4   mx-auto  text-text shadow-xl rounded-xl mt-10"
       style={{ fontFamily: "Arial, sans-serif" }}
     >
       <div className="flex flex-col md:flex-row gap-4 justify-center mb-6">

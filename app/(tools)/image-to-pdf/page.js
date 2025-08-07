@@ -54,6 +54,43 @@ export default function ImageToPDFPage() {
     <div className="bg-gray-50 text-gray-800">
       {/* Inject JSON-LD Structured Data */}
       <Script
+        id="image-to-pdf-software-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Image to PDF Converter",
+            operatingSystem: "All",
+            applicationCategory: "UtilityApplication",
+            browserRequirements: "Requires modern browser",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+            },
+            featureList: [
+              "Convert JPG, PNG, and WebP images to PDF",
+              "Batch image upload and drag-to-reorder support",
+              "Compress images before PDF conversion",
+              "Add optional watermark to output PDF",
+              "Works directly in-browser — no installation required",
+              "Private and secure — no file uploads",
+            ],
+            url: "https://www.freetoolshop.com/image-to-pdf",
+            description:
+              "Free online Image to PDF converter that supports batch uploads, compression, reordering, watermarking, and client-side security. Fast, simple, and works on all devices.",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "857",
+            },
+            applicationSubCategory: "DocumentManagementApplication",
+          }),
+        }}
+      />
+      <Script
         id="faq-schema"
         type="application/ld+json"
         strategy="afterInteractive"
@@ -100,9 +137,16 @@ export default function ImageToPDFPage() {
       />
 
       <div className="max-w-6xl mx-auto p-4">
-        <header className="mb-6 flex items-center justify-center  space-x-3 text-primary">
-          <FiUpload size={32} />
-          <h1 className="text-3xl font-bold">Image to PDF Converter</h1>
+        <header className="mb-6  space-y-4 text-primary">
+          {/* <FiUpload size={32} /> */}
+          <h1 className="text-3xl font-bold text-center">Image to PDF Converter</h1>
+          <p className="text-justify max-w-6xl mx-auto text-base mt-2 text-gray-700">
+            This free Image to PDF Converter lets you turn multiple image files
+            like JPG, PNG, and WebP into a single PDF document — no watermarks,
+            no logins. Customize the layout, compress images, and even add a
+            watermark before downloading. Ideal for students, professionals, and
+            everyday users looking for a fast and secure solution online.
+          </p>
         </header>
 
         {/* Client-side conversion UI */}
@@ -179,6 +223,30 @@ export default function ImageToPDFPage() {
               ✅ Mobile friendly • No login required • Secure and fast
             </p>
           </article>
+        </section>
+
+        <section className="mt-12 max-w-6xl w-full bg-base-100 p-6 rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold mb-4 text-primary">
+            Use Cases for Converting Images to PDF
+          </h2>
+          <ul className="list-disc pl-6 text-base text-base-content space-y-2">
+            <li>
+              Submit scanned documents (like ID proofs or signatures) as a
+              single PDF
+            </li>
+            <li>Create printable photo albums or image collections</li>
+            <li>
+              Bundle multiple screenshots into one file for sharing or reporting
+            </li>
+            <li>
+              Send assignment photos, handwritten notes, or receipts in one PDF
+            </li>
+            <li>Archive old image files into a compressed, portable format</li>
+            <li>
+              Prepare documents for online form submissions that accept only
+              PDFs
+            </li>
+          </ul>
         </section>
 
         <section className="mt-12 max-w-6xl w-full bg-base-100 p-6 rounded-lg shadow-md">

@@ -32,6 +32,21 @@ export const tools = [
     icon: "📐",
     category: "convert",
   },
+  {
+  "title": "YouTube Thumbnail Downloader",
+  "slug": "youtube-thumbnail-downloader",
+  "description": "Download YouTube thumbnails in high quality PNG format. Grab any video thumbnail online for free.",
+  "icon": "🎬",
+  "category": "convert"
+  // "category": "media"
+},
+{
+  "title": "Video Frame to Image",
+  "slug": "video-frame-to-image",
+  "description": "Upload any video and extract frames as PNG images to create custom thumbnails or snapshots.",
+  "icon": "🎥",
+  "category": "convert"
+}
   // {
   //   title: "PNG to JPG Converter",
   //   slug: "png-to-jpg",

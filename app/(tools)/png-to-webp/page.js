@@ -6,8 +6,9 @@ import MoreToolsSection from "@/components/MoreToolsSection";
 export const metadata = {
   title: "PNG to WebP Converter - Free & Private Online Tool",
   description:
-    "Convert PNG images to WebP format in seconds. No upload, no ads. Secure, fast, and free.",
-  keywords: "png to webp, png converter, webp online, image compression",
+    "Convert PNG to WebP online instantly — no uploads, no ads. Secure, private, and optimized for SEO and web performance. Works on all devices.",
+  keywords:
+    "png to webp, convert png to webp, free png to webp converter, webp image converter, png compression tool, webp for seo, online png optimizer, image converter browser, webp converter no upload",
   robots: {
     index: true,
     follow: true,
@@ -84,10 +85,146 @@ export default function PngToWebpPage() {
             }),
           }}
         />
+
+        <Script
+          id="software-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "PNG to WebP Converter",
+              operatingSystem: "All",
+              applicationCategory: "MultimediaApplication",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+              },
+              browserRequirements: "JavaScript enabled",
+              description:
+                "Convert PNG to WebP images in your browser with this free and secure tool. No uploads, fast conversion, and no sign-up needed.",
+            }),
+          }}
+        />
         <h1 className="text-3xl font-bold text-primary text-center mb-6">
           PNG → WebP Converter
         </h1>
+        <p className="text-base text-gray-700 my-4 max-w-6xl mx-auto text-justify">
+          Convert PNG to WebP instantly and securely using this free online
+          tool. No uploads, no watermarks, no ads — everything runs in your
+          browser for maximum speed and privacy. WebP images are up to 34%
+          smaller than PNGs, helping you boost website performance, improve SEO,
+          and save bandwidth. Perfect for web developers, eCommerce stores,
+          bloggers, and anyone optimizing images for the modern web.
+        </p>
+
         <ClientWrapper />
+
+        <section className="mt-12 bg-base-100 p-6 rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold mb-4 text-primary">
+            When Should You Convert PNG to WebP?
+          </h2>
+          <p className="text-gray-700 mb-4">
+            WebP is ideal when you want smaller file sizes without compromising
+            image quality. Below are the most common use cases for converting
+            PNG to WebP:
+          </p>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>
+              🌐 <strong>Web Development:</strong> Load faster websites with
+              smaller image assets
+            </li>
+            <li>
+              🛒 <strong>E-commerce:</strong> Improve product page speed and SEO
+              scores
+            </li>
+            <li>
+              📧 <strong>Email Campaigns:</strong> Reduce attachment size and
+              avoid bounce issues
+            </li>
+            <li>
+              📝 <strong>Blogging & WordPress:</strong> Use WebP to boost site
+              performance
+            </li>
+            <li>
+              📱 <strong>Mobile Apps:</strong> Save bandwidth and increase load
+              times
+            </li>
+          </ul>
+        </section>
+
+        <section className="mt-12 bg-base-100 p-6 rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold mb-4 text-primary">
+            PNG vs WebP – Which Image Format Is Better?
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Choosing between PNG and WebP depends on your use case. Here&apos;s
+            a quick comparison:
+          </p>
+          <div className="overflow-x-auto">
+            <table className="table-auto w-full border border-base-300 text-sm">
+              <thead className="bg-base-200 text-secondary">
+                <tr>
+                  <th className="p-2 text-left">Feature</th>
+                  <th className="p-2 text-left">PNG</th>
+                  <th className="p-2 text-left">WebP</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700">
+                <tr>
+                  <td className="p-2">Transparency Support</td>
+                  <td className="p-2">✅</td>
+                  <td className="p-2">✅</td>
+                </tr>
+                <tr>
+                  <td className="p-2">File Size</td>
+                  <td className="p-2">Larger</td>
+                  <td className="p-2">Smaller (up to 34%)</td>
+                </tr>
+                <tr>
+                  <td className="p-2">Browser Support</td>
+                  <td className="p-2">✅</td>
+                  <td className="p-2">✅</td>
+                </tr>
+                <tr>
+                  <td className="p-2">Ideal Use</td>
+                  <td className="p-2">Lossless images</td>
+                  <td className="p-2">Web optimization</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mt-12 bg-base-100 p-6 rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold mb-4 text-primary">
+            SEO Benefits of Using WebP Images
+          </h2>
+          <p className="text-gray-700 mb-4">
+            WebP isn&apos;t just a smaller format—it can actually help your
+            website rank better on search engines:
+          </p>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>
+              📈 <strong>Improves Core Web Vitals:</strong> Faster image loading
+              means better performance scores
+            </li>
+            <li>
+              🔍 <strong>Boosts Google Rankings:</strong> Fast pages get
+              prioritized in search results
+            </li>
+            <li>
+              ⚙️ <strong>Reduces Bounce Rate:</strong> Smaller files = quicker
+              content delivery
+            </li>
+            <li>
+              📱 <strong>Enhances Mobile Experience:</strong> Saves data and
+              speeds up mobile browsing
+            </li>
+          </ul>
+        </section>
 
         <section className="mt-16 border-t border-base-300 pt-10">
           <div className="max-w-6xl mx-auto text-left px-4 md:px-0">
@@ -103,7 +240,9 @@ export default function PngToWebpPage() {
 
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <h3 className="text-xl text-secondary font-semibold mb-2">🔍 Why Use WebP?</h3>
+                <h3 className="text-xl text-secondary font-semibold mb-2">
+                  🔍 Why Use WebP?
+                </h3>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
                   <li>
                     <strong>Smaller Files:</strong> Up to 34% smaller than PNG
@@ -119,7 +258,9 @@ export default function PngToWebpPage() {
               </div>
 
               <div>
-                <h3 className="text-xl text-secondary font-semibold mb-2">🛠️ How It Works</h3>
+                <h3 className="text-xl text-secondary font-semibold mb-2">
+                  🛠️ How It Works
+                </h3>
                 <ol className="list-decimal list-inside text-gray-700 space-y-1">
                   <li>Drop your PNG files into the converter above</li>
                   <li>Adjust quality, size, and compression settings</li>
@@ -132,7 +273,9 @@ export default function PngToWebpPage() {
             </div>
 
             <div className="mt-8">
-              <h3 className="text-xl text-secondary font-semibold mb-2">💡 Pro Tips</h3>
+              <h3 className="text-xl text-secondary font-semibold mb-2">
+                💡 Pro Tips
+              </h3>
               <ul className="list-disc list-inside text-gray-700 space-y-1">
                 <li>
                   Set quality to <strong>80%</strong> for optimal balance
