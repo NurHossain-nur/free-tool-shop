@@ -177,10 +177,10 @@ export default function ImageResizerPage() {
           <h2 className="text-2xl font-bold mt-8 mb-4 text-primary">
             Supported Formats
           </h2>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto text-text">
             <table className="table w-full border border-base-300 text-sm">
               <thead>
-                <tr className="bg-base-200 text-left text-neutral">
+                <tr className="bg-base-200 text-left text-secondary">
                   <th className="p-2">Format</th>
                   <th className="p-2">Supported</th>
                   <th className="p-2">Conversion</th>

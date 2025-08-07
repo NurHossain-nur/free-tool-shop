@@ -91,7 +91,7 @@ const PngToWebp = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4 text-neutral bg-base-100">
+    <div className="max-w-6xl mx-auto p-4 text-text bg-base-100">
 
       {/* Dropzone */}
       <div

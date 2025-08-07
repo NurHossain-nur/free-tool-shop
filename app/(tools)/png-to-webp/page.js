@@ -103,7 +103,7 @@ export default function PngToWebpPage() {
 
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <h3 className="text-xl font-semibold mb-2">🔍 Why Use WebP?</h3>
+                <h3 className="text-xl text-secondary font-semibold mb-2">🔍 Why Use WebP?</h3>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
                   <li>
                     <strong>Smaller Files:</strong> Up to 34% smaller than PNG
@@ -119,7 +119,7 @@ export default function PngToWebpPage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-2">🛠️ How It Works</h3>
+                <h3 className="text-xl text-secondary font-semibold mb-2">🛠️ How It Works</h3>
                 <ol className="list-decimal list-inside text-gray-700 space-y-1">
                   <li>Drop your PNG files into the converter above</li>
                   <li>Adjust quality, size, and compression settings</li>
@@ -132,7 +132,7 @@ export default function PngToWebpPage() {
             </div>
 
             <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-2">💡 Pro Tips</h3>
+              <h3 className="text-xl text-secondary font-semibold mb-2">💡 Pro Tips</h3>
               <ul className="list-disc list-inside text-gray-700 space-y-1">
                 <li>
                   Set quality to <strong>80%</strong> for optimal balance
@@ -148,7 +148,7 @@ export default function PngToWebpPage() {
             </div>
 
             <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-2">
+              <h3 className="text-xl text-secondary font-semibold mb-2">
                 ✅ Why Our Converter is Better
               </h3>
               <ul className="list-disc list-inside text-gray-700 space-y-1">
@@ -165,9 +165,9 @@ export default function PngToWebpPage() {
             </div>
           </div>
 
-          <div className="mt-16">
+          <div className="mt-16 text-text">
             <div className="max-w-6xl mx-auto px-4">
-              <h2 className="text-2xl font-bold mb-4">
+              <h2 className="text-2xl text-secondary font-bold mb-4">
                 🧠 Frequently Asked Questions
               </h2>
               <div className="space-y-4">

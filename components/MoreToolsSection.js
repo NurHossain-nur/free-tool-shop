@@ -11,7 +11,7 @@ const MoreToolsSection = ({ currentToolSlug }) => {
   };
 
   return (
-    <div className="mt-20">
+    <div className="mt-20 text-text">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-primary">
         🔧 Explore More Tools from FreeToolShop
       </h2>
@@ -23,12 +23,12 @@ const MoreToolsSection = ({ currentToolSlug }) => {
           <div className="space-y-3 flex flex-col">
             {categories.convert.slice(0, 5).map(tool => (
               <Link key={tool.slug} href={`/${tool.slug}`}>
-                <div className="h-full bg-base-200  p-3 rounded-xl shadow hover:bg-primary hover:text-white transition cursor-pointer">
+                <div className="glow-border p-5 bg-white rounded-xl h-full shadow transition-all hover:text-accent hover:shadow-[0_0_20px_var(--glow-color)] hover:scale-[1.02]">
                   <div className="flex items-center gap-3 ">
                     <span className="text-xl">{tool.icon}</span>
                     <div>
                       <p className="font-medium">{tool.title}</p>
-                      <p className="text-sm text-gray-500">{tool.description}</p>
+                      <p className="text-sm text-text">{tool.description}</p>
                     </div>
                   </div>
                 </div>

@@ -104,8 +104,8 @@ export default function JpgToPngPage() {
         <ClientWrapper />
 
         {/* How-to Instructions */}
-        <section className="mt-10 text-center text-neutral">
-          <h2 className="text-lg font-semibold">
+        <section className="mt-10 text-center text-text">
+          <h2 className="text-lg text-text font-semibold">
             How to Convert JPG to PNG?
           </h2>
           <p className="mt-2 max-w-2xl mx-auto">
@@ -123,10 +123,10 @@ export default function JpgToPngPage() {
 
         {/* FAQ Section */}
         <section className="mt-12">
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl text-text font-semibold mb-4">
             Frequently Asked Questions (FAQ)
           </h2>
-          <div className="space-y-4 text-neutral">
+          <div className="space-y-4 text-text">
             <div>
               <h3 className="font-semibold">Is this JPG to PNG converter free?</h3>
               <p>Yes, it&apos;s completely free to use with no watermarks or hidden charges.</p>
@@ -148,10 +148,10 @@ export default function JpgToPngPage() {
 
         {/* Why Choose Us */}
         <section className="mt-10">
-          <h2 className="text-xl font-semibold mb-2">
+          <h2 className="text-xl text-secondary font-semibold mb-2">
             Why Choose Our JPG to PNG Converter?
           </h2>
-          <ul className="list-disc pl-6 text-neutral">
+          <ul className="list-disc pl-6 text-text">
             <li>No watermarks, unlimited usage</li>
             <li>Supports transparent PNG background</li>
             <li>Compress image while converting</li>
@@ -161,7 +161,7 @@ export default function JpgToPngPage() {
         </section>
 
         {/* Supported Formats */}
-        <section className="mt-6">
+        <section className="mt-6 text-text">
           <h2 className="text-xl font-semibold mb-2">Supported Formats</h2>
           <table className="table w-full text-left bg-base-100">
             <thead>
@@ -181,8 +181,8 @@ export default function JpgToPngPage() {
 
         {/* Trusted Section */}
         <section className="mt-10 bg-base-100 p-4 rounded-lg text-center">
-          <h2 className="text-xl font-semibold mb-2">Trusted by Thousands</h2>
-          <p className="text-neutral">
+          <h2 className="text-xl text-secondary font-semibold mb-2">Trusted by Thousands</h2>
+          <p className="text-text">
             Our tools are used by students, marketers, designers, and developers
             worldwide.
           </p>

@@ -42,13 +42,12 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-base-100 text-neutral font-sans">
-
+    <main className="min-h-screen font-sans bg-[--background] text-[--foreground]">
       <div className="max-w-6xl mx-auto px-4 py-12">
+
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
-          // JSON-LD inside component render
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -57,7 +56,8 @@ export default function Home() {
               url: "https://www.freetoolshop.com",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://www.freetoolshop.com/search?q={search_term_string}",
+                target:
+                  "https://www.freetoolshop.com/search?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             }),
@@ -65,14 +65,13 @@ export default function Home() {
         />
 
         {/* Hero Section */}
-        <section className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-primary mb-4">
+        <section className="text-center mb-20">
+          <h1 className="text-5xl font-bold text-[--foreground] mb-5 leading-tight">
             All-in-One Online Tools ⚙️
           </h1>
-          <p className="text-lg text-neutral max-w-2xl mx-auto leading-relaxed">
-            FreeToolShop brings you a collection of essential online utilities —
-            from image converters to document compressors, everyday calculators,
-            and more. 100% Free, Safe, and Instant.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            FreeToolShop brings you a collection of essential online utilities — from image converters to document compressors, everyday calculators, and more.
+            <span className="text-[--color-primary] font-semibold"> 100% Free, Safe, and Instant.</span>
           </p>
         </section>
 
@@ -82,8 +81,8 @@ export default function Home() {
           { title: "📦 Compress", category: "compress" },
           { title: "🧰 Tools", category: "utility" },
         ].map(({ title, category }) => (
-          <section className="mb-14" key={category}>
-            <h2 className="text-2xl font-semibold mb-6 text-neutral">{title}</h2>
+          <section className="mb-16" key={category}>
+            <h2 className="text-2xl font-bold mb-6 text-[--foreground]">{title}</h2>
             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {tools
                 .filter((t) => t.category === category)
@@ -93,11 +92,9 @@ export default function Home() {
                     key={tool.slug}
                     aria-label={`Open ${tool.title}`}
                   >
-                    <div className="bg-base-100 border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-[--color-primary] transition-all cursor-pointer group h-full">
-                      <div className="text-4xl mb-2 group-hover:scale-105 transition">
-                        {tool.icon}
-                      </div>
-                      <h3 className="text-lg font-semibold text-primary mb-1">
+                    <div className="glow-border p-5 bg-white rounded-xl h-full shadow transition-all hover:shadow-[0_0_20px_var(--glow-color)] hover:scale-[1.02]">
+                      <div className="text-4xl mb-3">{tool.icon}</div>
+                      <h3 className="text-lg font-semibold text-[--color-primary] mb-1">
                         {tool.title}
                       </h3>
                       <p className="text-sm text-gray-600">{tool.description}</p>
@@ -109,20 +106,18 @@ export default function Home() {
         ))}
 
         {/* Blog Section */}
-        <section className="mt-20">
-          <h2 className="text-2xl font-bold mb-8 text-center text-neutral">
+        <section className="mt-24">
+          <h2 className="text-2xl font-bold mb-8 text-center text-[--foreground]">
             📚 Latest Blog - Boost Your Productivity!
           </h2>
-          <div className="bg--base-100 rounded-xl border border-gray-200 shadow-sm p-6 md:p-8 max-w-6xl mx-auto">
-            <h3 className="text-xl font-semibold mb-3 text-primary">
+          <div className="bg-[--color-base-100] rounded-xl border border-[--color-neutral] shadow p-6 md:p-8 max-w-6xl mx-auto">
+            <h3 className="text-xl font-semibold mb-4 text-[--color-primary]">
               🛠️ Top 10 Free Online Tools You Should Be Using in 2025
             </h3>
-            <p className="text-neutral mb-5 leading-relaxed">
-              In today&apos;s fast-paced digital life, online tools are essential.
-              From converting images to compressing files, these tools help you save
-              time and boost productivity.
+            <p className="text-[--foreground] mb-5 leading-relaxed">
+              In today&apos;s fast-paced digital life, online tools are essential. From converting images to compressing files, these tools help you save time and boost productivity.
             </p>
-            <ul className="list-disc pl-6 text-neutral space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-5">
               {[
                 ["jpg-to-png", "JPG to PNG Converter"],
                 ["image-compressor", "Image Compressor"],
@@ -137,7 +132,7 @@ export default function Home() {
               ].map(([slug, name]) => (
                 <li key={slug}>
                   <strong>
-                    <Link href={`/${slug}`} className="text-info hover:underline">
+                    <Link href={`/${slug}`} className="text-[--color-accent] hover:underline">
                       {name}:
                     </Link>
                   </strong>{" "}
@@ -145,9 +140,9 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <p className="text--neutral">
+            <p className="text-[--foreground]">
               🚀 Bookmark{" "}
-              <Link href="/" className="text-info underline">
+              <Link href="/" className="text-[--color-accent] underline hover:opacity-90">
                 FreeToolShop.com
               </Link>{" "}
               to access all these tools — free, fast, and secure. No signup required.
@@ -158,6 +153,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 // Helper function for descriptions
 function getToolDescription(name) {
