@@ -46,7 +46,11 @@ const WatermarkEditor = () => {
   const [logoXOffset, setLogoXOffset] = useState(50); // in %
   const [logoYOffset, setLogoYOffset] = useState(50); // in %
   const [showTextSettings, setShowTextSettings] = useState(true);
-const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
+  const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
+
+  const [customTextPosition, setCustomTextPosition] = useState(false);
+  const [textXOffset, setTextXOffset] = useState(50); // %
+  const [textYOffset, setTextYOffset] = useState(50); // %
 
   // Upload main image
   const handleImageUpload = (e) => {
@@ -214,29 +218,40 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
           ctx.restore();
         } else {
           ctx.save();
-          ctx.translate(canvas.width / 2, canvas.height / 2);
+
+          // Determine text position
+          let x, y;
+          if (customTextPosition) {
+            x = (canvas.width * textXOffset) / 100;
+            y = (canvas.height * textYOffset) / 100;
+          } else {
+            const pos = getPosition(canvas, ctx, watermarkText);
+            x = pos.x;
+            y = pos.y;
+          }
+
+          // Measure text width and approximate height
+          const textWidth = ctx.measureText(watermarkText).width;
+          const textHeight = fontSize; // approximate height
+
+          // Translate to text center
+          ctx.translate(x + textWidth / 2, y - textHeight / 2); // subtract for canvas coordinates
           ctx.rotate((rotation * Math.PI) / 180);
-          const { x, y } = getPosition(canvas, ctx, watermarkText);
-          ctx.fillText(
-            watermarkText,
-            x - canvas.width / 2,
-            y - canvas.height / 2
-          );
+
+          // Draw text centered at origin
           if (outline) {
             ctx.lineWidth = outlineWidth;
             ctx.strokeStyle = outlineColor;
-            ctx.strokeText(
-              watermarkText,
-              x - canvas.width / 2,
-              y - canvas.height / 2
-            );
+            ctx.strokeText(watermarkText, -textWidth / 2, textHeight / 2);
           }
+          ctx.fillText(watermarkText, -textWidth / 2, textHeight / 2);
+
           ctx.restore();
         }
       }
 
       // Draw image watermark
-      if (watermarkImage && !customLogoPosition) {
+      if (watermarkImage && !customLogoPosition && !customTextPosition) {
         const wm = new Image();
         wm.crossOrigin = "anonymous";
         wm.src = watermarkImage;
@@ -288,6 +303,10 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
     logoScale,
     logoXOffset,
     logoYOffset,
+    textXOffset,
+    textYOffset,
+    customTextPosition,
+    customLogoPosition,
   ]);
 
   // Manual apply button (optional)
@@ -308,26 +327,131 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
   };
 
   // Download watermarked image
-  const handleDownload = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  //   const handleDownload = () => {
+  //     const canvas = canvasRef.current;
+  //     if (!canvas) return;
+  //     const link = document.createElement("a");
+  //     link.download = "watermarked.png";
+  //     link.href = canvas.toDataURL("image/png");
+  //     link.click();
+  //     toast.success("Image downloaded!");
+  //   };
+
+//   const handleDownload = () => {
+//     if (!canvasRef.current) return;
+
+//     const canvas = canvasRef.current;
+
+//     // Optional: Resize canvas for download to limit file size
+//     const maxWidth = 1920;
+//     const maxHeight = 1080;
+//     let targetWidth = canvas.width;
+//     let targetHeight = canvas.height;
+
+//     const ratio = Math.min(
+//       maxWidth / canvas.width,
+//       maxHeight / canvas.height,
+//       1
+//     );
+//     targetWidth = canvas.width * ratio;
+//     targetHeight = canvas.height * ratio;
+
+//     // Create temporary canvas for resizing
+//     const tempCanvas = document.createElement("canvas");
+//     tempCanvas.width = targetWidth;
+//     tempCanvas.height = targetHeight;
+//     const tempCtx = tempCanvas.getContext("2d");
+
+//     // Draw the main canvas onto the temporary canvas (scaled)
+//     tempCtx.drawImage(canvas, 0, 0, targetWidth, targetHeight);
+
+//     // Convert to JPEG (compressed)
+//     const link = document.createElement("a");
+//     link.download = "watermarked.jpg";
+//     link.href = tempCanvas.toDataURL("image/jpeg", 0.85); // adjust quality 0.6~0.9
+//     link.click();
+
+//     toast.success(
+//       "Image downloaded exactly like preview (resized & compressed)!"
+//     );
+//   };
+
+const handleDownload = () => {
+  if (!canvasRef.current) return;
+
+  const canvas = canvasRef.current;
+
+  // Optional: Resize canvas for download to limit file size
+  const maxWidth = 1920;
+  const maxHeight = 1080;
+  let targetWidth = canvas.width;
+  let targetHeight = canvas.height;
+
+  const ratio = Math.min(
+    maxWidth / canvas.width,
+    maxHeight / canvas.height,
+    1
+  );
+  targetWidth = canvas.width * ratio;
+  targetHeight = canvas.height * ratio;
+
+  // Create temporary canvas for resizing
+  const tempCanvas = document.createElement("canvas");
+  tempCanvas.width = targetWidth;
+  tempCanvas.height = targetHeight;
+  const tempCtx = tempCanvas.getContext("2d");
+
+  // Draw the main canvas onto the temporary canvas (scaled)
+  tempCtx.drawImage(canvas, 0, 0, targetWidth, targetHeight);
+
+  // Draw watermark logo if exists
+  if (watermarkImage) {
+    const wm = new Image();
+    wm.crossOrigin = "anonymous";
+    wm.src = watermarkImage;
+    wm.onload = () => {
+      const wmWidth = tempCanvas.width * logoScale;
+      const wmHeight = (wm.height / wm.width) * wmWidth;
+
+      const x = (tempCanvas.width * logoXOffset) / 100 - wmWidth / 2;
+      const y = (tempCanvas.height * logoYOffset) / 100 - wmHeight / 2;
+
+      tempCtx.globalAlpha = opacity;
+      tempCtx.save();
+      tempCtx.translate(x + wmWidth / 2, y + wmHeight / 2);
+      tempCtx.rotate((rotation * Math.PI) / 180);
+      tempCtx.drawImage(wm, -wmWidth / 2, -wmHeight / 2, wmWidth, wmHeight);
+      tempCtx.restore();
+
+      // Download with logo
+      const link = document.createElement("a");
+      link.download = "watermarked.jpg";
+      link.href = tempCanvas.toDataURL("image/jpeg", 0.85);
+      link.click();
+
+      toast.success("Image downloaded with watermark (logo)!");
+    };
+  } else {
+    // Download without logo
     const link = document.createElement("a");
-    link.download = "watermarked.png";
-    link.href = canvas.toDataURL("image/png");
+    link.download = "watermarked.jpg";
+    link.href = tempCanvas.toDataURL("image/jpeg", 0.85);
     link.click();
-    toast.success("Image downloaded!");
-  };
+
+    toast.success("Image downloaded exactly like preview!");
+  }
+};
 
   const dragDataRef = useRef(null);
 
-  const handleDragStart = (e) => {
-    const logo = e.target;
-    const container = logo.parentElement;
+  const handleDragStart = (e, type = "logo") => {
+    const item = e.target;
+    const container = item.parentElement;
 
     const startX = e.clientX;
     const startY = e.clientY;
 
-    const rect = logo.getBoundingClientRect();
+    const rect = item.getBoundingClientRect();
     const offsetLeft = rect.left - container.getBoundingClientRect().left;
     const offsetTop = rect.top - container.getBoundingClientRect().top;
 
@@ -337,7 +461,7 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
       offsetLeft,
       offsetTop,
       container,
-      logo,
+      type,
     };
 
     document.addEventListener("mousemove", handleDragging);
@@ -346,8 +470,7 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
 
   const handleDragging = (e) => {
     if (!dragDataRef.current) return;
-
-    const { startX, startY, offsetLeft, offsetTop, container } =
+    const { startX, startY, offsetLeft, offsetTop, container, type } =
       dragDataRef.current;
 
     const dx = e.clientX - startX;
@@ -362,9 +485,13 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
     const xPercent = (newLeft / containerWidth) * 100;
     const yPercent = (newTop / containerHeight) * 100;
 
-    // Clamp values between 0 and 100
-    setLogoXOffset(Math.max(0, Math.min(100, xPercent)));
-    setLogoYOffset(Math.max(0, Math.min(100, yPercent)));
+    if (type === "logo") {
+      setLogoXOffset(Math.max(0, Math.min(100, xPercent)));
+      setLogoYOffset(Math.max(0, Math.min(100, yPercent)));
+    } else if (type === "text") {
+      setTextXOffset(Math.max(0, Math.min(100, xPercent)));
+      setTextYOffset(Math.max(0, Math.min(100, yPercent)));
+    }
   };
 
   const handleDragEnd = () => {
@@ -373,15 +500,29 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
     document.removeEventListener("mouseup", handleDragEnd);
   };
 
-  useEffect(() => {
-    if (fontFamily && googleFonts.includes(fontFamily)) {
-      WebFont.load({
-        google: {
-          families: [fontFamily],
-        },
-      });
-    }
-  }, [fontFamily]);
+//   useEffect(() => {
+//     if (fontFamily && googleFonts.includes(fontFamily)) {
+//       WebFont.load({
+//         google: {
+//           families: [fontFamily],
+//         },
+//       });
+//     }
+//   }, [fontFamily]);
+
+useEffect(() => {
+  if (fontFamily && googleFonts.includes(fontFamily)) {
+    WebFont.load({
+      google: { families: [fontFamily] },
+      active: () => {
+        // Trigger redraw once the font is loaded
+        if (image) {
+          setImage((prev) => prev + ""); // force re-render & redraw canvas
+        }
+      },
+    });
+  }
+}, [fontFamily, image]);
 
   useEffect(() => {
     if (!customLogoPosition) {
@@ -431,8 +572,6 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
       <div className="flex flex-col-reverse lg:flex-row w-full gap-6 items-start">
         {/* Left Side - Controls */}
         <div className="flex flex-col gap-4 w-full lg:w-[40%] max-w-[450px]">
-            
-
           <div className="card bg-base-200 shadow-xl rounded-2xl p-5 space-y-4">
             <h3 className="card-title text-lg font-bold border-b pb-2">
               📝 Text Settings
@@ -529,6 +668,55 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
                 <option value="lighter">Thin</option>
               </select>
             </label>
+
+            <label className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-sm"
+                checked={customTextPosition}
+                onChange={(e) => setCustomTextPosition(e.target.checked)}
+              />
+              <span className="text-sm">Custom Text Position</span>
+            </label>
+
+            {/* Custom Text Position Sliders */}
+            {customTextPosition && (
+              <div className="mt-2 space-y-3">
+                {/* X Slider */}
+                <div>
+                  <label className="flex justify-between mb-1 text-sm">
+                    <span>X Position</span>
+                    <span className="font-mono">{textXOffset.toFixed(0)}%</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value={textXOffset}
+                    onChange={(e) => setTextXOffset(Number(e.target.value))}
+                    className="range range-xs"
+                  />
+                </div>
+
+                {/* Y Slider */}
+                <div>
+                  <label className="flex justify-between mb-1 text-sm">
+                    <span>Y Position</span>
+                    <span className="font-mono">{textYOffset.toFixed(0)}%</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value={textYOffset}
+                    onChange={(e) => setTextYOffset(Number(e.target.value))}
+                    className="range range-xs"
+                  />
+                </div>
+              </div>
+            )}
 
             {/* Outline Toggle */}
             <label className="label cursor-pointer flex items-center justify-between">
@@ -858,7 +1046,7 @@ const [showWatermarkOptions, setShowWatermarkOptions] = useState(true);
               />
 
               {customLogoPosition && watermarkImage && (
-                <image
+                <img
                   src={watermarkImage}
                   alt="Watermark Preview"
                   className="absolute cursor-move pointer-events-auto select-none"
