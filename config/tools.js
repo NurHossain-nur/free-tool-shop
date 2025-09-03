@@ -46,7 +46,25 @@ export const tools = [
   "description": "Upload any video and extract frames as PNG images to create custom thumbnails or snapshots.",
   "icon": "🎥",
   "category": "convert"
-}
+},
+{
+  "title": "AI Image Upscaler Online Free Without Watermark",
+  "slug": "ai-image-upscaler",
+  "description": "Use our AI-powered image upscaler and denoiser tool to enhance and enlarge images online for free. No watermark. Upscale to 2x, 4x, and more!",
+  "icon": "🖼️",
+  "category": "convert"
+  // "category": "image"
+},
+{
+  "title": "PDF Merge Tool",
+  "slug": "pdf-merge",
+  "description": "Combine multiple PDF files into one seamless document with drag & drop support and instant merging.",
+  "icon": "📎",
+  "category": "convert",
+  "keywords": ["merge pdf", "combine pdf", "pdf joiner", "pdf combiner"],
+  "tags": ["pdf", "no-api", "client-only", "drag-drop"]
+},
+
   // {
   //   title: "PNG to JPG Converter",
   //   slug: "png-to-jpg",
@@ -72,6 +90,13 @@ export const tools = [
   // },
 
   // Utility Tools
+  {
+    "title": "Watermark Editor",
+    "slug": "watermark-editor",
+    "description": "Add, edit, and customize watermarks on your images easily.",
+    "icon": "💧",
+    "category": "utility"
+  }
   // {
   //   title: "Word Counter",
   //   slug: "word-counter",

@@ -1,9 +1,10 @@
 // app/image-to-pdf/page.tsx
 // import Head from "next/head";
-import ClientWrapper from "./ClientWrapper";
+// import ClientWrapper from "./ClientWrapper";
 import { FiUpload } from "react-icons/fi";
 import Script from "next/script";
 import MoreToolsSection from "@/components/MoreToolsSection";
+import ClientWrapper from "./ClientWrapper";
 // import JsonLd from "./JsonLd";
 
 export const metadata = {
